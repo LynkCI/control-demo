@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lynk - Connexion</title>
+    <script src="js/theme-loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-container">
+                <img src="img/logo.png" alt="Lynk Logo" class="logo-img">
+            </div>
+            <h2>Connexion</h2>
+            
+            <form id="loginForm">
+                <div class="alert" id="errorMessage"></div>
+                
+                <div class="input-group">
+                    <div class="input-icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <input type="password" id="password" placeholder="Mot de passe" required>
+                </div>
+                
+                <button type="submit" class="login-button">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Se connecter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

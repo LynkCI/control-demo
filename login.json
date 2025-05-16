@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@lynk.com",
+      "fullName": "Administrateur Principal",
+      "phone": "+225 07 123 045 67",
+      "role": "admin",
+      "language": "en",
+      "theme": "light",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "lastLogin": "2025-05-14T16:01:09.593Z"
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "password": "user123",
+      "email": "user@lynk.com",
+      "fullName": "Utilisateur Standard",
+      "phone": "+221 77 987 65 43",
+      "role": "user",
+      "language": "fr",
+      "theme": "light",
+      "createdAt": "2024-01-15T00:00:00.000Z",
+      "lastLogin": null
+    }
+  ]
+}

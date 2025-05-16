@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lynk - Contrôle du Switch</title>
+    <script src="js/theme-loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Vérification d'authentification -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="img/logo.png" alt="Lynk Logo" class="logo-img">
+                </div>
+                <h1>Contrôle du Switch</h1>
+            </div>
+            
+            <div class="user-info">
+                <span id="usernameDisplay">admin</span>
+                <button id="logout" class="btn-logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    Déconnexion
+                </button>
+            </div>
+        </header>
+        
+        <!-- Ajout de la navigation entre les pages -->
+        <!-- Remplacer la navigation existante par celle-ci -->
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="dashboard.html" class="nav-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Tableau de Bord</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+
+        <main>
+            <div class="server-config">
+                <h3>Configuration du serveur</h3>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-server"></i>
+                    <input type="text" id="serverAddress" placeholder="Adresse du serveur (ex: 192.168.1.10:3001)">
+                </div>
+                <button id="connectBtn" class="btn btn-primary">
+                    <i class="fa-solid fa-plug"></i>
+                    Connecter
+                </button>
+                <div id="connectionStatus" class="connection-status">Non connecté</div>
+            </div>
+            
+            <!-- Mode automatique déplacé ici, avant la section d'état -->
+            <div class="auto-mode-container">
+                <h2>Mode automatique (capteur de présence)</h2>
+                <div class="toggle-switch-container">
+                    <span class="toggle-label">Désactivé</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="autoModeToggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span class="toggle-label">Activé</span>
+                </div>
+                <p class="mode-description">
+                    Lorsque activé, l'interrupteur s'allume/s'éteint automatiquement en fonction de la présence détectée.
+                </p>
+            </div>
+            
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="status-icon sensor-icon">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>État du capteur</h3>
+                        <p id="sensorStatus" class="status-value">--</p>
+                    </div>
+                </div>
+            
+                <div class="status-card">
+                    <div class="status-icon switch-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <div class="status-info">
+                        <h3>État de l'interrupteur: Salon 1</h3>
+                        <p id="switchStatus" class="status-value">--</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-buttons">
+                <button id="turnOn" class="btn btn-on" disabled>
+                    <i class="fa-solid fa-power-off"></i>
+                    Allumer
+                </button>
+                <button id="turnOff" class="btn btn-off" disabled>
+                    <i class="fa-solid fa-power-off"></i>
+                    Éteindre
+                </button>
+            </div>
+            
+            <!-- Supprimer la section mode automatique qui était ici -->
+            
+            <div class="schedule-container">
+                <h2>Configurer les horaires</h2>
+                <form id="timeForm">
+                    <!-- reste du code inchangé -->
+                    <div class="time-inputs">
+                        <div class="time-input">
+                            <label for="onTime">Temps ON (HH:MM):</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-sun"></i>
+                                <input type="time" id="onTime" name="onTime" required>
+                            </div>
+                        </div>
+                        <div class="time-input">
+                            <label for="offTime">Temps OFF (HH:MM):</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-moon"></i>
+                                <input type="time" id="offTime" name="offTime" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" disabled>Sauvegarder</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Lynk - Contrôle Intelligent</p>
+        </footer>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script>
+        // Afficher le nom d'utilisateur connecté
+        document.getElementById("usernameDisplay").textContent = localStorage.getItem("username") || "Utilisateur";
+        
+        // Ajouter l'événement de déconnexion
+        document.getElementById("logout").addEventListener("click", logout);
+    </script>
+</body>
+</html>

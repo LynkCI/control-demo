@@ -1,0 +1,29 @@
+{
+  "history": [
+    {
+      "date": "14/04/2025",
+      "consumption": 2.4,
+      "cost": 0.38
+    },
+    {
+      "date": "15/04/2025",
+      "consumption": 3.1,
+      "cost": 0.49
+    },
+    {
+      "date": "16/04/2025",
+      "consumption": 2.7,
+      "cost": 0.43
+    },
+    {
+      "date": "17/04/2025",
+      "consumption": 1.9,
+      "cost": 0.3
+    },
+    {
+      "date": "18/04/2025",
+      "consumption": 2.3,
+      "cost": 0.37
+    }
+  ]
+}

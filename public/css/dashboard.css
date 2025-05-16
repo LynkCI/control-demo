@@ -1,0 +1,477 @@
+/* Styles pour le tableau de bord */
+
+:root {
+    --primary-gradient: linear-gradient(135deg, rgb(144, 215, 243) 0%, #05437c 90%);
+    --primary-color: #05437c;
+    --secondary-color: #ff7b00;
+    --positive-color: #4caf50;
+    --negative-color: #f44336;
+    --light-bg: #f5f8fa;
+    --white: #ffffff;
+    --dark-text: #333333;
+    --light-text: #777777;
+    --border-radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Navigation principale entre pages */
+.main-nav {
+    display: flex;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--dark-text);
+    flex-grow: 1;
+    justify-content: center;
+    transition: var(--transition);
+    border-bottom: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: #f0f5fa;
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.nav-item i {
+    font-size: 18px;
+}
+
+/* Cartes résumé */
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition);
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 24px;
+}
+
+.consumption .card-icon {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.cost .card-icon {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+}
+
+.forecast .card-icon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 14px;
+    color: var(--light-text);
+    margin-bottom: 5px;
+}
+
+.card-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 3px;
+}
+
+.card-indicator {
+    font-size: 12px;
+    color: var(--light-text);
+}
+
+.card-indicator.positive {
+    color: var(--positive-color);
+}
+
+.card-indicator.negative {
+    color: var(--negative-color);
+}
+
+/* Filtres de période */
+.period-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 15px 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-label {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.filter-options {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    background-color: var(--light-bg);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 14px;
+    color: var(--dark-text);
+}
+
+.filter-btn:hover {
+    background-color: #e9f0f6;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.date-navigator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#currentPeriod {
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 150px;
+    text-align: center;
+}
+
+.nav-btn {
+    background-color: var(--light-bg);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--dark-text);
+}
+
+.nav-btn:hover {
+    background-color: #e9f0f6;
+    color: var(--primary-color);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Graphique de consommation */
+.dashboard-chart {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.dashboard-chart h2 {
+    color: var(--dark-text);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+/* Historique de consommation */
+.consumption-history {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.consumption-history h2 {
+    color: var(--dark-text);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.history-container {
+    overflow-x: auto;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.history-table th, .history-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    font-weight: 600;
+}
+
+.history-table tr {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.history-table tr:hover {
+    background-color: #f9fcff;
+}
+
+.history-table td .trend {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.trend.up {
+    color: var(--negative-color); /* Négatif car coût en hausse */
+}
+
+.trend.down {
+    color: var(--positive-color); /* Positif car coût en baisse */
+}
+
+/* Conseils d'économie d'énergie */
+.energy-tips {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.energy-tips h2 {
+    color: var(--dark-text);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.tip-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: var(--light-bg);
+    transition: var(--transition);
+}
+
+.tip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.tip-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.tip-content h3 {
+    font-size: 16px;
+    color: var(--dark-text);
+    margin-bottom: 5px;
+}
+
+.tip-content p {
+    font-size: 14px;
+    color: var(--light-text);
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .period-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-container, .date-navigator {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .chart-container {
+        height: 300px;
+    }
+
+    .summary-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card-value {
+        font-size: 20px;
+    }
+
+    .tip-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-item span {
+        display: none;
+    }
+
+    .nav-item i {
+        font-size: 22px;
+    }
+
+    .filter-options {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .date-navigator {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* Ajouter ces styles à votre fichier dashboard.css */
+.recent-periods-summary {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+.recent-periods-summary h2 {
+    color: var(--dark-text);
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.recent-periods-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.period-card {
+    background-color: var(--light-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.period-card:hover {
+    transform: translateY(-5px);
+}
+
+.period-card h3 {
+    font-size: 16px;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+.period-value {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.period-cost {
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+/* Style pour le thème sombre */
+html.dark-theme .period-card {
+    background-color: #30363d;
+}
+
+html.dark-theme .period-value {
+    color: #58a6ff;
+}
+
+html.dark-theme .period-cost {
+    color: #f0883e;
+}

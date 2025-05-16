@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lynk - Tableau de Bord</title>
+    <script src="js/theme-loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Vérification d'authentification -->
+    <script src="js/auth-check.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="img/logo.png" alt="Lynk Logo" class="logo-img">
+                </div>
+                <h1>Tableau de Bord</h1>
+            </div>
+            
+            <div class="user-info">
+                <span id="usernameDisplay">admin</span>
+                <button id="logout" class="btn-logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    Déconnexion
+                </button>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Accueil</span>
+            </a>
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Tableau de Bord</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+
+        <main>
+            <!-- Vue d'ensemble des indicateurs clés -->
+            <section class="dashboard-summary">
+                <div class="summary-card consumption">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Consommation du mois</h3>
+                        <p class="card-value"><span id="currentConsumption">0</span> kWh</p>
+                        <div id="monthComparisonIndicator">
+                            <!-- L'indicateur de comparaison sera ajouté dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card cost">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Coût actuel</h3>
+                        <p class="card-value"><span id="currentCost">0</span> FCFA</p>
+                        <div id="costComparisonIndicator">
+                            <!-- L'indicateur de comparaison sera ajouté dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-card forecast">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Prévision mensuelle</h3>
+                        <p class="card-value"><span id="forecastCost">0</span> FCFA</p>
+                        <p class="card-indicator">Basé sur la consommation actuelle</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vue récapitulative des périodes récentes -->
+            <section class="recent-periods-summary">
+                <h2>Récapitulatif des périodes récentes</h2>
+                <div class="recent-periods-container">
+                    <div class="period-card">
+                        <h3>Hier</h3>
+                        <div class="period-value"><span id="yesterdayConsumption">0</span> kWh</div>
+                        <div class="period-cost"><span id="yesterdayCost">0</span> FCFA</div>
+                    </div>
+                    
+                    <div class="period-card">
+                        <h3>Semaine en cours</h3>
+                        <div class="period-value"><span id="weekConsumption">0</span> kWh</div>
+                        <div class="period-cost"><span id="weekCost">0</span> FCFA</div>
+                    </div>
+                    
+                    <div class="period-card">
+                        <h3>Mois précédent</h3>
+                        <div class="period-value"><span id="prevMonthConsumption">0</span> kWh</div>
+                        <div class="period-cost"><span id="prevMonthCost">0</span> FCFA</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filtres de période -->
+            <section class="period-filter">
+                <div class="filter-container">
+                    <div class="filter-label">Période :</div>
+                    <div class="filter-options">
+                        <button class="filter-btn" data-period="week">Semaine</button>
+                        <button class="filter-btn" data-period="month">Mois</button>
+                        <button class="filter-btn active" data-period="year">Année</button>
+                    </div>
+                </div>
+                <div class="date-navigator">
+                    <button id="prevPeriod" class="nav-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span id="currentPeriod">Année 2025</span>
+                    <button id="nextPeriod" class="nav-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Graphique de consommation d'énergie -->
+            <section class="dashboard-chart">
+                <h2>Consommation d'Énergie</h2>
+                <div class="chart-container" style="position: relative; height: 350px;">
+                    <canvas id="consumptionChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Historique de consommation -->
+            <section class="consumption-history">
+                <h2>Historique des Coûts</h2>
+                <div class="history-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Période</th>
+                                <th>Consommation (kWh)</th>
+                                <th>Coût (FCFA)</th>
+                                <th>Comparaison</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyData">
+                            <!-- Les données seront ajoutées par JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Actions et conseils d'économie -->
+            <section class="energy-tips">
+                <h2>Conseils d'Économie d'Énergie</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h3>Optimisez vos heures d'utilisation</h3>
+                            <p>Utilisez vos appareils pendant les heures creuses pour réduire votre facture de 15%.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h3>Utilisez des LED</h3>
+                            <p>Les ampoules LED consomment jusqu'à 80% moins d'énergie que les ampoules traditionnelles.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">
+                            <i class="fa-solid fa-temperature-low"></i>
+                        </div>
+                        <div class="tip-content">
+                            <h3>Réglez vos thermostats</h3>
+                            <p>Réduire la température de 1°C peut diminuer votre consommation de 7%.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Lynk - Contrôle Intelligent</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Afficher le nom d'utilisateur connecté
+        document.getElementById("usernameDisplay").textContent = localStorage.getItem("username") || "Utilisateur";
+        
+        // Ajouter l'événement de déconnexion
+        document.getElementById("logout").addEventListener("click", logout);
+    </script>
+</body>
+</html>

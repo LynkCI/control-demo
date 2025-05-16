@@ -1,0 +1,225 @@
+{
+  "daily": [
+    {
+      "timestamp": 1745928406793,
+      "date": "29/04/2025",
+      "consumption": 181,
+      "cost": 23349
+    },
+    {
+      "timestamp": 1745933114894,
+      "date": "29/04/2025",
+      "consumption": 100,
+      "cost": 12900
+    },
+    {
+      "timestamp": 1745936718058,
+      "date": "29/04/2025",
+      "consumption": 100,
+      "cost": 12900
+    },
+    {
+      "timestamp": 1745940320979,
+      "date": "29/04/2025",
+      "consumption": 100,
+      "cost": 12900
+    },
+    {
+      "timestamp": 1745943923710,
+      "date": "29/04/2025",
+      "consumption": 100,
+      "cost": 12900
+    },
+    {
+      "timestamp": 1745947526791,
+      "date": "29/04/2025",
+      "consumption": 177,
+      "cost": 22833
+    },
+    {
+      "timestamp": 1745960163861,
+      "date": "29/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1745967831254,
+      "date": "29/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1745971434698,
+      "date": "30/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1745975037691,
+      "date": "30/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1745978637728,
+      "date": "30/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1745982241852,
+      "date": "30/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1745985845814,
+      "date": "30/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1746000087047,
+      "date": "30/04/2025",
+      "consumption": 7,
+      "cost": 903
+    },
+    {
+      "timestamp": 1746006187756,
+      "date": "30/04/2025",
+      "consumption": 100,
+      "cost": 12900
+    },
+    {
+      "timestamp": 1746009790931,
+      "date": "30/04/2025",
+      "consumption": 174,
+      "cost": 22446
+    },
+    {
+      "timestamp": 1746013393803,
+      "date": "30/04/2025",
+      "consumption": 160,
+      "cost": 20640
+    },
+    {
+      "timestamp": 1746016996973,
+      "date": "30/04/2025",
+      "consumption": 102,
+      "cost": 13158
+    },
+    {
+      "timestamp": 1746020600079,
+      "date": "30/04/2025",
+      "consumption": 214,
+      "cost": 27606
+    },
+    {
+      "timestamp": 1746024203595,
+      "date": "30/04/2025",
+      "consumption": 216,
+      "cost": 27864
+    },
+    {
+      "timestamp": 1746027807933,
+      "date": "30/04/2025",
+      "consumption": 220,
+      "cost": 28380
+    },
+    {
+      "timestamp": 1746031411202,
+      "date": "30/04/2025",
+      "consumption": 213,
+      "cost": 27477
+    },
+    {
+      "timestamp": 1746035014071,
+      "date": "30/04/2025",
+      "consumption": 203,
+      "cost": 26187
+    },
+    {
+      "timestamp": 1746461989833,
+      "date": "05/05/2025",
+      "consumption": 344,
+      "cost": 44376
+    },
+    {
+      "timestamp": 1746465589802,
+      "date": "05/05/2025",
+      "consumption": 341,
+      "cost": 43989
+    },
+    {
+      "timestamp": 1746469189846,
+      "date": "05/05/2025",
+      "consumption": 327,
+      "cost": 42183
+    },
+    {
+      "timestamp": 1747237094525,
+      "date": "14/05/2025",
+      "consumption": 343,
+      "cost": 44247
+    },
+    {
+      "timestamp": 1747244294650,
+      "date": "14/05/2025",
+      "consumption": 220,
+      "cost": 28380
+    },
+    {
+      "timestamp": 1747326357591,
+      "date": "15/05/2025",
+      "consumption": 322,
+      "cost": 41538
+    },
+    {
+      "timestamp": 1747329957277,
+      "date": "15/05/2025",
+      "consumption": 164,
+      "cost": 21156
+    }
+  ],
+  "weekly": [
+    {
+      "timestamp": 1745107200000,
+      "date": "Sem 17",
+      "consumption": 3405,
+      "cost": 439245
+    },
+    {
+      "timestamp": 1745712000000,
+      "date": "Sem 18",
+      "consumption": 3239,
+      "cost": 417831
+    },
+    {
+      "timestamp": 1746316800000,
+      "date": "Sem 19",
+      "consumption": 1012,
+      "cost": 130548
+    },
+    {
+      "timestamp": 1746921600000,
+      "date": "Sem 20",
+      "consumption": 1049,
+      "cost": 135321
+    }
+  ],
+  "monthly": [
+    {
+      "timestamp": 1743465600000,
+      "date": "Avr 2025",
+      "consumption": 3239,
+      "cost": 417831
+    },
+    {
+      "timestamp": 1746057600000,
+      "date": "Mai 2025",
+      "consumption": 2061,
+      "cost": 265869
+    }
+  ],
+  "lastUpdated": 1747329957277
+}
