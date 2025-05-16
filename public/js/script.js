@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // État de l'application
     let manualMode = false;
     let connected = false;
-    const API_URL = window.getApiBaseUrl();
+    let API_URL = window.getApiBaseUrl();
     let statusTimer = null;
 
     

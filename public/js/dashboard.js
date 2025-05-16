@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return `http://${host}:3001`;
     };
     
-    const API_URL = getApiUrl();
+    let API_URL = getApiUrl();
     console.log("Connexion à l'API via:", API_URL);
     
     // --- STRUCTURES DE DONNÉES ---
