@@ -18,8 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // État de l'application
     let manualMode = false;
     let connected = false;
-    let API_URL = "";
+    const API_URL = window.getApiBaseUrl();
     let statusTimer = null;
+
+    
     
     // Charge l'adresse du serveur depuis le stockage local
     const loadSavedServerAddress = () => {
@@ -44,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     // Fonction pour se connecter au serveur
+    // Fonction pour se connecter au serveur
     const connectToServer = () => {
         // Récupérer l'adresse du serveur
         let serverAddress = serverAddressInput.value.trim();
@@ -54,9 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         
-        // Ajouter le protocole si absent
+        // Ajouter le protocole si absent - C'EST CETTE PARTIE QUI EST CORRECTE
         if (!serverAddress.startsWith("http://") && !serverAddress.startsWith("https://")) {
-            serverAddress = "http://" + serverAddress;
+            // Utiliser le même protocole que la page actuelle
+            const protocol = window.location.protocol;
+            serverAddress = protocol + '//' + serverAddress;
         }
         
         // Mettre à jour l'UI en mode connexion

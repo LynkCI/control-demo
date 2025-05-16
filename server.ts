@@ -97,7 +97,8 @@ const cors = require("cors");
 app.use(cors({
   origin: "*", // Permet l'accès depuis n'importe quelle origine
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 
 // Création du serveur HTTP et Socket.IO
@@ -992,6 +993,17 @@ app.get("/api/auto-mode", handleAutoModeGet);
 // Démarrer le serveur
 const PORT = process.env.PORT || 3001;
 const HOST = '0.0.0.0';
+// Créer un middleware pour rediriger HTTP vers HTTPS en production
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+      res.redirect(`https://${req.header('host')}${req.url}`);
+    } else {
+      next();
+    }
+  });
+}
+
 server.listen({
   port: PORT,
   host: HOST
@@ -1007,7 +1019,7 @@ server.listen({
     for (const net of nets[name]) {
       // Ignorer les adresses non IPv4 et les interfaces loopback
       if (net.family === "IPv4" && !net.internal) {
-        console.log(`- http://${net.address}:${PORT}`);
+        console.log(`- ${process.env.NODE_ENV === 'production' ? 'https' : 'http'}://${net.address}:${PORT}`);
       }
     }
   }

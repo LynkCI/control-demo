@@ -30,13 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         try {
-            // Récupérer l'adresse du serveur depuis le localStorage ou utiliser localhost par défaut
-            let serverAddress = localStorage.getItem('serverAddress') || window.location.hostname + ':3001';
-            
-            // S'assurer que l'URL est correctement formatée
-            if (!serverAddress.startsWith('http://') && !serverAddress.startsWith('https://')) {
-                serverAddress = 'http://' + serverAddress;
-            }
+            // Utiliser la fonction getApiBaseUrl pour obtenir l'URL du serveur
+            const serverAddress = window.getApiBaseUrl();
             
             // Pour déboguer - afficher l'URL complète dans la console
             console.log("URL de l'API:", `${serverAddress}/api/auth/login`);
@@ -97,11 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fonction pour tester une connexion directe au serveur
     async function testDirectConnection() {
         try {
-            // Essayer de se connecter directement à la racine du serveur
-            let serverAddress = localStorage.getItem('serverAddress') || window.location.hostname + ':3001';
-            if (!serverAddress.startsWith('http://') && !serverAddress.startsWith('https://')) {
-                serverAddress = 'http://' + serverAddress;
-            }
+            // Utiliser la fonction getApiBaseUrl pour obtenir l'URL du serveur
+            const serverAddress = window.getApiBaseUrl();
             
             showError("Test de connexion en cours...", "info");
             

@@ -24,19 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fonction pour récupérer les données utilisateur
     async function fetchUserData() {
         try {
-            // Récupérer l'adresse du serveur depuis le localStorage ou utiliser localhost
-            const serverAddress = localStorage.getItem('serverAddress') || 'localhost:3001';
-            const response = await fetch(`http://${serverAddress}/api/users/${username}`);
-            const data = await response.json();
+            const serverAddress = localStorage.getItem('serverAddress') || window.location.hostname + ':3001';
+            let apiUrl;
             
-            if (data.success) {
-                userData = data.user;
-                populateForm(userData);
-                return true;
+            if (!serverAddress.startsWith('http://') && !serverAddress.startsWith('https://')) {
+                apiUrl = window.location.protocol + '//' + serverAddress;
             } else {
-                showAlert(data.message || 'Erreur lors de la récupération des données', 'error');
-                return false;
+                apiUrl = serverAddress;
             }
+            
+            const response = await fetch(`${apiUrl}/api/users/${username}`);
         } catch (error) {
             console.error('Erreur:', error);
             showAlert('Erreur de connexion au serveur', 'error');
